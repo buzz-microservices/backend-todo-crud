@@ -1,0 +1,13 @@
+kind: Pod
+metadata:
+  name: node
+spec:
+  containers:
+  - name: node
+    image: node:12.7.0-alpine
+    resources:
+      requests:
+        memory: "1Gi"
+    command:
+    - cat
+    tty: true
