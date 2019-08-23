@@ -8,6 +8,9 @@ spec:
     resources:
       requests:
         memory: "1Gi"
+    envFrom:
+    - configMapRef:
+        name: frontend-test-config
     command:
     - cat
     tty: true
