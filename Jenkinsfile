@@ -35,7 +35,7 @@ pipeline {
                     steps {
                         container('node') {
                         echo "no tests"
-                        //sh 'CI=true npm test'
+                        sh 'CI=true npm test'
                     }
                     script{
                    commitHash = sh(returnStdout: true, script: "git rev-parse HEAD | cut -c1-7 | tr -d '\n'")
