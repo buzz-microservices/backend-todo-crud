@@ -6,14 +6,14 @@ const mongoose = require('mongoose');
 const todoRoutes = express.Router();
 const PORT = 4000;
 
-let Todo = require('./todo.model');
+let Todo = require('../models/todo.model');
 
 app.use(cors());
 app.use(bodyParser.json());
-//mongoose.connect('mongodb://mongodb:27017/todos'
-mongoose.connect('mongodb://mongo-mongodb-replicaset-0.mongo-mongodb-replicaset.cje.svc.cluster.local:27017,\
-                            mongo-mongodb-replicaset-1.mongo-mongodb-replicaset.cje.svc.cluster.local:27017,\
-                            mongo-mongodb-replicaset-2.mongo-mongodb-replicaset.cje.svc.cluster.local:27017/todos?replicaSet=rs0', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/todos', { useNewUrlParser: true });
+//mongoose.connect('mongodb://mongo-mongodb-replicaset-0.mongo-mongodb-replicaset.cje.svc.cluster.local:27017,\
+//                            mongo-mongodb-replicaset-1.mongo-mongodb-replicaset.cje.svc.cluster.local:27017,\
+//                            mongo-mongodb-replicaset-2.mongo-mongodb-replicaset.cje.svc.cluster.local:27017/todos?replicaSet=rs0', { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', function() {
@@ -28,6 +28,11 @@ todoRoutes.route('/').get(function(req, res) {
             res.json(todos);
         }
     });
+});
+
+todoRoutes.route('/health').get(function(req, res) {
+    var json = require('../package.json');
+    res.status(200).send({ status: "OK", version: json.version });
 });
 
 todoRoutes.route('/:id').get(function(req, res) {
@@ -72,3 +77,4 @@ app.use('/todos', todoRoutes);
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
 });
+module.exports = app;
