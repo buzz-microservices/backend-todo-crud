@@ -34,7 +34,6 @@ pipeline {
             stage('Test'){
                     steps {
                         container('node') {
-                        echo "no tests"
                         sh 'CI=true npm test'
                     }
                     script{
