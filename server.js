@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const todoRoutes = express.Router();
 const PORT = 4000;
 
-let Todo = require('../models/todo.model');
+let Todo = require('./todo.model');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -31,7 +31,7 @@ todoRoutes.route('/').get(function(req, res) {
 });
 
 todoRoutes.route('/health').get(function(req, res) {
-    var json = require('../package.json');
+    var json = require('./package.json');
     res.status(200).send({ status: "OK", version: json.version });
 });
 

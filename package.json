@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "mocha tests/*.js --exit",
-    "start": "node controllers/server.js"
+    "test": "mocha *.test.js --exit",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
