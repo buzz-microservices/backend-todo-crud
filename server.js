@@ -32,7 +32,7 @@ todoRoutes.route('/').get(function(req, res) {
 
 todoRoutes.route('/health').get(function(req, res) {
     var json = require('./package.json');
-    res.status(200).send({ status: "OK!", version: json.version });
+    res.status(200).send({ status: "OK", version: json.version });
 });
 
 todoRoutes.route('/:id').get(function(req, res) {
