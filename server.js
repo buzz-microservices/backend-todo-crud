@@ -32,7 +32,7 @@ todoRoutes.route('/').get(function(req, res) {
 
 
 todoRoutes.route('/deleteall').get(function(req, res) {
-    Todo.deleteMany({},function(err) {
+    Todo.remove({},function(err) {
         if (err) {
             console.log(err);
         } else {
