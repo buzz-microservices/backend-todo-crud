@@ -1,4 +1,4 @@
 apiVersion: v1
 description: Nodejs backend
 name: backend-todo-crud
-version: 0.0.1
+version: 0.0.2
