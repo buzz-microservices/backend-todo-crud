@@ -30,6 +30,17 @@ todoRoutes.route('/').get(function(req, res) {
     });
 });
 
+
+todoRoutes.route('/deleteall').get(function(req, res) {
+    Todo.deleteMany({},function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.end('success');
+        }
+    });
+});
+
 todoRoutes.route('/health').get(function(req, res) {
     var json = require('./package.json');
     res.status(200).send({ status: "OK", version: json.version });
